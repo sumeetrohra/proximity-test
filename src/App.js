@@ -8,8 +8,6 @@ function App() {
 	const historicalData = useStockMarketData();
 	const [selectedTicker, setSelectedTicker] = useState();
 
-	console.log(historicalData);
-
 	const renderError = () => (
 		<Container>
 			<div
