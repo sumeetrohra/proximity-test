@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Container from "react-bootstrap/container";
-import Spinner from "react-bootstrap/spinner";
+import { Container, Spinner } from "react-bootstrap";
 
 import { StockPriceTable, PriceChart } from "./components";
 import useStockMarketData from "./customHooks/useStockMarketData";

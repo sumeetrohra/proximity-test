@@ -1,6 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
-import Table from "react-bootstrap/table";
+import { Table } from "react-bootstrap";
 
 const StockPriceTable = ({ priceData, setSelectedTicker }) => {
 	const tickerSymbols = Object.keys(priceData);
