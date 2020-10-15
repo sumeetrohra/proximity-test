@@ -1,3 +1,12 @@
+This project is a stock market simulation with a insecure socket endpoint ovet ssl/tsl.
+deployed version can be found here: https://sumeetrohra.github.io/proximity-test/
+
+Insecure connection instructions gif:
+![](https://gph.is/g/4ze872K)
+
+Stock simulaion:
+![](https://gph.is/g/ZWoy0NX)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
