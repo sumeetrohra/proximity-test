@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Container from "react-bootstrap/container";
+
+import { StockPriceTable, PriceChart } from "./components";
+import useStockMarketData from "./customHooks/useStockMarketData";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const historicalData = useStockMarketData();
+	const [selectedTicker, setSelectedTicker] = useState();
+
+	return (
+		<Container
+			style={{
+				display: "grid",
+				gridTemplateColumns: "1fr 4fr",
+				gridGap: "20px",
+				marginTop: "20px",
+			}}>
+			<StockPriceTable
+				priceData={historicalData}
+				setSelectedTicker={setSelectedTicker}
+			/>
+			<PriceChart
+				data={{
+					ticker: selectedTicker,
+					priceData: historicalData[selectedTicker],
+				}}
+			/>
+		</Container>
+	);
 }
 
 export default App;
