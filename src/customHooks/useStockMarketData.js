@@ -3,13 +3,18 @@ import { useState, useEffect } from "react";
 export default () => {
 	const [currentStockPriceData, setCurrentStockPriceData] = useState([]);
 	const [historicalData, setHistoricalData] = useState({});
+	const [websocketError, setWebSocketError] = useState(false);
 
 	const ENDPOINT = "ws://stocks.mnet.website";
 
 	useEffect(() => {
-		const connection = new WebSocket(ENDPOINT);
-		connection.onmessage = (event) =>
-			setCurrentStockPriceData(JSON.parse(event.data));
+		try {
+			const connection = new WebSocket(ENDPOINT);
+			connection.onmessage = (event) =>
+				setCurrentStockPriceData(JSON.parse(event.data));
+		} catch {
+			setWebSocketError(true);
+		}
 	}, []);
 
 	useEffect(() => {
@@ -34,5 +39,7 @@ export default () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentStockPriceData]);
 
-	return historicalData;
+	return websocketError
+		? { error: "insecure Web Socket connection" }
+		: historicalData;
 };

@@ -4,8 +4,6 @@ import "chart.js";
 import propTypes from "prop-types";
 
 const PriceChart = ({ data }) => {
-	console.log(data);
-
 	const getRenderData = (priceData) =>
 		priceData.reduce((acc, curr) => {
 			acc[curr.timestamp] = curr.price;
