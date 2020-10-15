@@ -4,7 +4,7 @@ export default () => {
 	const [currentStockPriceData, setCurrentStockPriceData] = useState([]);
 	const [historicalData, setHistoricalData] = useState({});
 
-	const ENDPOINT = "wsit://stocks.mnet.website";
+	const ENDPOINT = "ws://stocks.mnet.website";
 
 	useEffect(() => {
 		const connection = new WebSocket(ENDPOINT);
